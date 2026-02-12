@@ -1,0 +1,100 @@
+configuration {
+	modi:				            "drun";
+	font:				            "SF Pro Display Bold 11";
+	display-drun: 			        "";
+	icon-theme: "Numix";
+	show-icons: true;
+}
+
+* {
+	bg:				                #0F0E0E95;
+	fg:				                #C1C2C5;
+	button:				            #0F0E0E95;
+	background-color:		        transparent;
+	text-color:			            @fg;
+}
+
+window {
+	transparency:                   "real";
+	border-radius:                  0px;
+    border:                         2px 0px 2px 0px;
+    border-color:                   transparent;
+	width:			    	        100%;
+	padding: 			            20px;
+	location: 			            center;
+	background-color:               #0F0E0E95;
+}
+
+prompt { enabled: false; }
+
+entry {
+	placeholder:			        "";
+	cycle: true;
+	padding:                        5px 2% 5px 2%;
+	background-color:               transparent;
+    placeholder-color:              @bg;
+    text-color:                     @bg;
+}
+
+inputbar {
+	enabled: false;
+	children: 			            [ prompt, entry ];
+	background-color:               @button;
+	text-color:                     @bg;
+	expand:                         false;
+	border-radius:                  6px;
+	padding:                        8px;
+}
+
+listview {
+	columns:                        1;
+	lines:	                        8;
+	cycle:                          false;
+	dynamic:                        true;
+	layout:                         vertical;
+	background: transparent;
+}
+
+mainbox {
+	children:                       [ inputbar, listview ];
+	spacing:                       	2%;
+
+}
+
+element {
+	border-radius:                  0%;
+	padding:                        5px 0px 5px 0px;
+	background-color:               transparent;
+	children: 						[element-icon, element-text];
+}
+element-icon {
+	size: 							30px;
+	margin:							0px 0px 0px 10px;
+	background-color: inherit;
+
+ }
+
+element-text {
+	expand:                         true;
+	vertical-align:                 0.5;
+	margin:                         0.5% 3% 0% 3%;
+	background-color:               inherit;
+    text-color:                     inherit;
+}
+
+element selected {
+	background-color:               @fg;
+	text-color:                     @bg;
+	border-radius:                  6px;
+	padding-left:                   10px; /* Slight padding for text area */
+}
+
+element selected element-icon {
+	background-color: transparent; /* Icon background stays transparent */
+}
+
+element selected element-text {
+	background-color: transparent; /* Ensure text background color applies */
+	padding-left: 5px; /* Adjust for better alignment */
+	margin: 0 300px; /* Shift text right to avoid icon */
+}
