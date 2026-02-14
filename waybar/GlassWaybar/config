@@ -1,0 +1,161 @@
+{
+
+  "position": "top",
+  "exlusive": "true",
+  "passthrough": "true",
+  "gtk-layer-shell": "true",
+  "margin-top": 10,
+  "margin-left": 10,
+  "margin-right": 10,
+  "height": 20,
+  "width": 1000,
+  "reload_style_on_change": true,
+
+  "modules-left": [
+  "clock",
+  "pulseaudio",
+  "pulseaudio#microphone",
+  ],
+  "modules-center": [
+
+  "hyprland/workspaces",
+
+  ],
+  "modules-right": [
+    "mpris",
+  "tray",
+  "custom/notification"
+  ],
+
+  "group/audio":{
+    "orientation": "inherit",
+    "drawer" : {
+    "transition-duration": 300,
+      "transition-left-to-right": true,
+    },
+    "modules": ["pulseaudio","pulseaudio#microphone"]
+  },
+
+  "tray": {
+    "icon-size": 20,
+    "icon-theme": "Papirus",
+    "spacing": 4,
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "",
+      "8": "",
+      "9": "",
+      "active": "",
+      "urgent": "",
+      "persistent": "",
+      "focused": "",
+      "default": "",
+
+        },
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 5,
+      "DP-1": 9
+    }
+  },
+  "clock": {
+    "interval": 1,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "<span font_desc='SF Pro Display Bold 12'>{:%H:%M:%S}</span>",
+    "format-alt": "<span font_desc='SF Pro Display Bold 12'>{:%Y-%m-%d}</span>"
+  },
+
+  "mpris": {
+	"format": "<span font_desc='SF Pro Display Bold 12'>{player_icon} {dynamic}</span>",
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+	"dynamic-len": 30,
+	"interval": 1,
+	"player-icons": {
+		"default": "▶",
+		"spotify": " ",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	},
+	// "ignored-players": ["firefox"]
+},
+
+  "pulseaudio": {
+    "format": "<span color='#a6e3a1' font='10'>{icon} </span><span font_desc='SF Pro Display Bold 12'>{volume}%</span>",
+    "format-bluetooth": "<span color='#a6e3a1' font='10'>{icon}</span>  <span font_desc='SF Pro Display Bold 12'>{volume}%</span>",
+    "tooltip": false,
+    "format-muted": "<span color='#f38ba8' font='10'>󰝟</span>",
+    "on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 10%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 10%-",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        "",
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "<span color='#f38ba8' font='10'> </span><span font_desc='SF Pro Display Bold 12'>{volume}%</span>",
+    "format-source-muted": "",
+    "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_SOURCE@ 5%+",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+  },
+
+  "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " ",
+        "format-ethernet": "<span font_desc='SF Pro Display Bold 12'>󰈀</span>",
+        "tooltip-format": "Strength: ({signalStrength}%)",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-disabled": "DISABLED ⚠",
+        "on-click": "better-control"
+    },
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "<span color='#FFFFFF' font='12'>{icon}</span><span><sup>{0}</sup></span>",
+        "format-icons": {
+            "notification": "󱅫",
+            "none": "󰂚",
+            "dnd-notification": "󰂛",
+            "dnd-none": "󰂛",
+            "inhibited-notification": "󱅫",
+            "inhibited-none": "󰂚",
+            "dnd-inhibited-notification": "󰂛",
+            "dnd-inhibited-none": "󰂛"
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+
+    },
+    "custom/cava": {
+        "format": "{}",
+        "exec": "~/.config/waybar/Scripts/cava.sh"
+    }
+}

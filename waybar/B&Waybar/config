@@ -1,0 +1,279 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 26, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    "margin":"5 5 0 5",
+    "reload_style_on_change": true,
+    // Choose the order of the modules
+    "modules-left": [
+
+        "group/left",
+
+    ],
+    "modules-center": [
+
+    ],
+    "modules-right": [
+        "group/right"
+    ],
+
+    "group/left": {
+      "orientation": "inherit",
+      "modules": ["custom/menu","hyprland/workspaces","hyprland/window","group/apps","clock","group/utils"]
+    },
+    "group/right": {
+      "orientation" : "inherit",
+      "modules": ["group/stuffs","group/audio","group/connections","custom/notifications"]
+    },
+    "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "format": "{icon}",
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "show-special": false,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "format-icons": {
+      "active": "<span font='10'>󰮯</span>",
+      "empty": "<span font='4'></span>",
+      "default": "<span font='8'>󰊠</span>"
+    }
+  },
+  "group/stuffs": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 300,
+        "transition-left-to-right": true,
+    },
+        "modules": ["custom/left","group/quick"]
+  },
+
+  "group/quick": {
+    "orientation": "inherit",
+    "modules": ["custom/weather", "power-profiles-daemon", "tray"]
+  },
+
+  "group/apps": {
+    "orientation": "inherit",
+    "modules": ["custom/code","custom/discord","custom/pdf"]
+  },
+
+  "custom/code": {
+    "format": "󰨞",
+    "tooltip-format": "VSCodium",
+    "on-click": "~/scripts/vscodium-wayland.sh"
+  },
+  "custom/discord": {
+    "format": "",
+    "tooltip-format": "Disord",
+    "on-click": "webcord"
+  },
+  "custom/pdf": {
+    "format": "",
+    "tooltip-format": "Document Viewer",
+    "on-click": "evince"
+  },
+
+  "custom/menu": {
+    "format": "<span font='12 '>󰣇</span>",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+  "custom/right": {
+    "format": "",
+    "tooltip":false
+  },
+  "custom/left": {
+    "format": "",
+    "tooltip": false
+    },
+
+  "hyprland/window": {
+    "format": " 󰣆  {title}",
+    "max-length": 80,
+    "separate-outputs": false,
+    "rewrite": {
+      "^.*( — Zen Browser|Zen Browser)$": "󰈹 Zen",
+      "^.*( — Mozilla firefox|Mozilla Firefox)$": "󰈹 FireFox",
+      "^.*v( .*|$)": " Neovim",
+      "^.*~$": "󰄛 Kitty",
+      "(.*) ": " Empty",
+      "^.*( — Code - OSS|Code - OSS)$": "󰨞 VSCode"
+    }
+  },
+
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Asia/Dhaka",
+        "format": " {:%H:%M:%S}  ",
+        "interval": 1,
+        "tooltip":false,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-calendar"
+    },
+
+    "group/utils": {
+        "orientation": "inherit",
+        "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": false,
+    },
+        "modules": ["custom/right","group/utility"]
+    },
+    "group/utility": {
+      "orientation": "inherit",
+      "modules": ["cpu", "memory","disk","temperature","custom/updates"]
+    },
+
+    "custom/updates": {
+    "format": "󱧕 {}",
+    "tooltip": true,
+    "interval": 43200, // 12 hours
+    "exec": "~/.config/waybar/scripts/check_updates.sh",
+    "return-type": "json",
+    "on-click": "kitty -e bash -c 'yay -Syu; paru -Syu; sudo pacman -Syu'"
+
+
+  },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+        "on-click": "missioncenter"
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "missioncenter"
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""],
+        "on-click": "missioncenter"
+    },
+    "disk": {
+    "interval": 600,
+    "format": "󰆼 {percentage_used}󱉸",
+    "path": "/",
+    "on-click": "missioncenter"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "group/connections": {
+      "orientation": "inherit",
+      "modules": ["network","bluetooth","battery"]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "Strength: ({signalStrength}%)",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-disabled": "DISABLED ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "better-control"
+    },
+
+    "bluetooth": {
+    "format": " 󰂯 ",
+    "tooltip": true,
+	  "tooltip-format": "Bluetooth Settings",
+    "on-click": "overskride",
+   },
+
+    "group/audio": {
+      "orientation": "inherit",
+      "modules": ["pulseaudio","backlight"]
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}   {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "custom/weather": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --custom-indicator '{ICON}{temp_C}' --location Dhaka",
+    "return-type": "json",
+  },
+    "custom/notifications": {
+    "tooltip": false,
+    "format": " {}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󰂛",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󰂚",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}

@@ -1,0 +1,299 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: MesloLGSDZ Nerd Font;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#left {
+    background:  white;
+    border-radius: 999px;
+    padding: 1px 0px 1px 1px;
+}
+#right {
+    background:  white;
+    border-radius: 999px;
+    padding: 1px 1px 1px 0px;
+     
+}
+#utils {
+    background:  white;
+    margin: 0px 10px;
+
+}
+#utility {
+    background: black;
+    border-radius: 999px;
+}
+#stuffs {
+    background:  white;
+    margin: 0px 10px;
+}
+#connections {
+    background:  black;
+    border-radius: 999px;
+    margin: 0px 0px;
+    padding: 0px 12px;
+     
+}
+#audio {
+    background:  black;
+    border-radius: 999px;
+    margin: 0px 8px;
+    padding: 0px 12px;
+     
+}
+#apps {
+    background:  black;
+    border-radius: 999px;
+    margin: 0px 0px;
+}
+
+#quick {
+    background: black;
+    color: white;
+    border-radius: 999px;
+    margin-left: 8px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/* you can set a style on hover for any module like this */
+
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 999px;
+}
+
+#workspaces button.focused {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+    border-radius: 999px;
+}
+
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#window{
+    margin: 0 4px 0px 0px;
+    padding: 0px 12px;
+    background:  black;
+    color:  white;
+    border-radius: 999px;
+     
+}
+#workspaces{
+    margin: 0 4px;
+    background:  black;
+     padding: 0px 8px 0px 0px;
+     border-radius: 999px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    background-color:  black;
+    color:  white;
+    border-radius: 999px;
+    padding: 0px 8px;
+    margin: 0px 1px 0px 4px;
+}
+#custom-notifications {
+    background:  white;
+    color:  black;
+    padding: 0px 5px;
+    margin: 0px 8px; 
+    border-radius: 999px;    
+}
+
+#custom-code,
+#custom-discord,
+#custom-pdf {
+    padding: 0px 14px;
+    border-radius: 999px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 999px;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#custom-menu {
+    padding: 0px 10px 0px 7px;
+    background: white;
+    color: black;
+    border: 2px solid white;
+    border-radius: 999px;
+}
+#custom-right{
+    color: black;
+    background: white;
+    font-size: 20px;
+    margin: 0 3px 0 0;
+}
+
+#custom-left{
+    color: black;
+    background: white;
+    font-size: 20px;
+    border-radius: 999px;
+    margin: 0 0 0 3px;
+}
+
+
+#cpu,
+#memory,
+#disk ,
+#temperature,
+#custom-updates{
+    padding: 0px 8px;
+    margin: 0px 4px;
+    background-color: black;
+    border-radius: 999px;
+    color:  white;
+     
+}
+
+#pulseaudio,
+#backlight {
+    color: white;
+    padding: 0px 5px;
+    border-radius: 999px;
+
+}
+
+#bluetooth,
+#network,
+#battery {
+    color: white;
+    padding: 0px 10px;
+    border-radius: 999px;
+}
+
+#tray,
+#custom-weather,
+#power-profiles-daemon {
+    padding: 0px 8px;
+}
+
+#network.disconnected {
+    background-color: red;
+}
+
+
+#custom-media {
+    background-color: #66cc99;
+    color: #2a5c45;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+    background-color: #ffa000;
+}
+
+#temperature.critical {
+    background-color: #eb4d4b;
+}
+
+
+#mpd {
+    background-color: #66cc99;
+    color: #2a5c45;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+

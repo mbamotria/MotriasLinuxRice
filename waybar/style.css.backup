@@ -1,0 +1,160 @@
+@import url("file:///home/motria/.cache/wal/colors-waybar.css");
+
+
+* {
+    border: none;
+    border-radius: 10px;
+    font-family: "SF Pro Display";
+    font-weight: bold;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #cdd6f4;
+}
+
+tooltip {
+    background: @background;
+    border-radius: 99px;
+
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#workspaces button {
+    color: @foreground;
+    margin-right: 5px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+#workspaces button.active {
+    color: @color0;
+}
+
+#workspaces button.focused {
+    color: @color0;
+    background: #eba0ac;
+    border-radius: 13px;
+}
+
+#workspaces button.persistent {
+    color: @color3;
+}
+
+#workspaces button.empty {
+    color: @color4;
+}
+
+#workspaces button.active,
+#workspaces button.visible {
+    color: @color6;
+}
+
+#workspaces button.urgent {
+    color: @color7;
+}
+#clock,
+#pulseaudio,
+#pulseaudio.microphone,
+#network,
+#tray {
+    background: @color12;
+    opacity: 1;
+    padding: 1.5px 7px 1.5px 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 13px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#workspaces {
+    background: @color0;
+    border: 2px solid @color10;
+    opacity: 1;
+    padding: 1.5px 7px 1.5px 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 99px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+#window {
+    border-radius: 7px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+#clock {
+    color: @color15;
+    border-radius: 99px 99px 99px 99px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#network {
+    color: @color15;
+    border-radius: 7px 7px 7px 7px;
+    margin-right: 5px;
+}
+
+#custom-notifications {
+    color: @color15;
+    border-radius: 7px 7px 7px 7px;
+    padding-left: 9px;
+    padding-right: 15px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#custom-updates {
+    color: @color15;
+    border-radius: 7px 7px 7px 7px;
+    border-left: 0px;
+    border-right: 0px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+#custom-player {
+    color: @color13;
+    border-radius: 7px 7px 7px 7px;
+    padding-left: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#network {
+    color: @color15;
+    border-radius: 0px 99px 99px 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 20px;
+}
+
+#pulseaudio {
+    color: @color15;
+    border-radius: 99px 0px 0px 99px;
+    padding-left: 10px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+#pulseaudio.microphone {
+    color: @color15;
+    border-radius: 0px 99px 99px 0px;
+    padding-right: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#tray {
+    border-radius : 99px;
+    padding: 0px 10px;
+}
