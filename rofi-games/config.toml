@@ -1,0 +1,63 @@
+# Allows hiding any entries which don't have box art images defined
+hide_entries_without_box_art = false
+# Directory to find box art in if an absolute path is not given
+box_art_dir = "~/.config/rofi-games/box-art"
+# If the box art for a game is not found, fallback to using the icon
+fallback_to_icons = true
+# Show the source launcher next to the title of each entry
+show_entry_source_text = true
+# Make entry titles bold - recommended if showing the source text
+use_bold_entry_title = true
+
+# Settings relating to the ordering of listed entries
+[sort]
+# Possible options for sort order:
+#  - "alphabetical"
+#  - "none" - don't apply any ordering algorithm
+#  - "frequency" - most frequently accessed
+#  - "recency" - most recently accessed
+#  - "frecency" - weighted combination of frequency and recency (default)
+order = "frequency"
+ # Option to reverse the result of the sort order. Ignored if sort order is none.
+reverse = false
+
+# Launcher specific settings (Steam)
+# Possible keys include: steam, lutris, bottles, heroic, itch, atlauncher, prism
+[launchers.steam]
+# Hide all entries from this launcher
+hide = false
+# Extra arguments passed to the launch command of all entries from this launcher
+extra_args = ["-silent"]
+# Fallback box art for entries from this launcher which don't have one - also checks box_art_dir
+path_fallback_box_art = "~/images/steam.png"
+
+# Define a new custom entry
+[[entries]]
+title = "Genshin Impact"
+launch_command = "an-anime-game-launcher"
+# Overrides environment variables before running the launch command
+launch_env = { LOG_LEVEL = "info", "can_quote_key_too" = "some_value"}
+# Looks for the image in the defined `box_art_dir`
+path_box_art = "/home/motria/Pictures/Thumbnail/Genshin_Impact.webp"
+path_game_dir = "/home/motria/.local/share/anime-game-launcher/"
+
+# # Change box art for a title
+# [[entries]]
+# title = "Cyberpunk 2077"
+# path_box_art = "~/images/cyberpunk.png"
+
+# # Run the game with a different SDL driver
+# [[entries]]
+# title = "PyGame"
+# launch_env = { SDL_VIDEODRIVER = "x11" }
+
+# # Define box art for a title e.g. Minecraft instances
+# # Modded Minecraft instances are always prefixed with "Minecraft: "
+# [[entries]]
+# title = "Minecraft: Fabulously Optimized"
+# path_box_art = "fabulously_optimized.png"
+
+# Hide/disable a title
+# [[entries]]
+# title = "THE FINALS"
+# hide = true
